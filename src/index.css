@@ -1,13 +1,131 @@
+:root{
+    --font-color: #F2C879;
+    --bg-color: #102040;
+    --move-bg:#025E73;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    font: 14px "Century Gothic", Futura, sans-serif;
+    background-image: url(./imgs/bg.jpg);
+    background-color:var(--bg-color);
+    background-blend-mode:screen ;
+    font-family: 'Quicksand', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ol, ul {
+    padding-left: 30px;    
+}
+li{
+    list-style: none;
+    margin:1em;
+}
+.board-row::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+/* .status {
+    margin-bottom: 30px;    
+} */
+@keyframes flash{
+    0%{color:white;
+       transform: scale(1.2);
+    }
+    25%{color:pink;
+        transform: scale(1);
+    }
+    50%{color:salmon;
+        transform: scale(1.2);
+    }
+    75%{color:var(--font-color);
+        transform: scale(1);
+    }
+    100%{color:white;
+        transform: scale(1.2);
+     }
+    
+}
+.square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 60px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 60px;
+   }
+
+.square:focus {
+    outline: none;
+}
+
+.kbd-navigation .square:focus {
+    background: #ddd;
+}
+
+.game {
+    display: grid;
+    grid-template-rows:0.5fr 2fr auto;
+    justify-items: center;
+    width: 50%;
+    min-width: 300px;
+    max-width: 800px;
+    margin:30px auto;
+}
+.game>h2{  
+
+    color:var(--font-color);
+    font-size: clamp(21px, 2vw, 28px);
+    animation: flash ease 3s infinite;
+}
+.game-board{
+   margin-bottom: 30px;
+}
+
+.game-info {
+    background-color: var(--move-bg);
+    margin-left: 20px;
+    width:100%;
+    height: 500px;
+    border: 2px dashed var(--font-color);
+    border-radius: 5px;
+
+}
+.game-info>div{
+    color:var(--font-color);
+    font-weight: 600;
+    font-size:clamp(18px, 2vw, 21px);
+    display:block;
+    width: 200px;
+    margin: 10px auto;
+}
+.all-moves{
+    display: flex;
+    flex-flow: row wrap; 
+}
+.move-btn{
+    padding:1em;
+    color:white;
+    font-size: clamp(14px, 1.5vw, 16px);
+    background-color: rgba(0,0,0,0);
+    border:none;
+}
+.move-btn::before{
+   content:" ";
+   display: inline-block;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   margin-right: 5px;
+   background-color:var(--font-color);
+}
+.move-btn::after{
+    content: " >";
+    margin-left: 5px;
 }
